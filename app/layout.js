@@ -1,15 +1,10 @@
-import localFont from "next/font/local";
+import { Outfit } from 'next/font/google';
 import "./globals.css";
+import { ToastContainer, toast } from 'react-toastify';
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const outfit = Outfit({
+  subsets: ['latin'], // Choose the required subsets
+  weight: ['400', '500', '700'], // Specify font weights
 });
 
 export const metadata = {
@@ -21,8 +16,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${outfit.variable} antialiased`}
       >
+        <ToastContainer />
         {children}
       </body>
     </html>
